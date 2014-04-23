@@ -20,3 +20,14 @@ exports.requiresAdmin = function(req, res, next) {
     }
     next();
 };
+
+/**
+ * Generic require Member routing middleware
+ */
+exports.requiresMember = function(req, res, next) {
+    if (!req.isAuthenticated() || !req.user.hasRole('member')) {
+        return res.send(401, 'User is not authorized');
+    }
+    next();
+};
+
