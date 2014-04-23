@@ -1,7 +1,7 @@
 {
-    "name": "checkinout",
+    "name": "edit",
     "version": "0.0.0",
-    "description": "部员签到，签离",
+    "description": "编辑新闻到机房主页和微信平台",
     "author": {
         "name": "mean scaffold"
     },

@@ -1,7 +1,7 @@
 {
-    "name": "checkinout",
+    "name": "resolve",
     "version": "0.0.0",
-    "description": "部员签到，签离",
+    "description": "解答问题计算机问题",
     "author": {
         "name": "mean scaffold"
     },

@@ -1,7 +1,7 @@
 {
-    "name": "checkinout",
+    "name": "computers",
     "version": "0.0.0",
-    "description": "部员签到，签离",
+    "description": "机房电脑管理模块-同学上机，同学下机，维修部维修",
     "author": {
         "name": "mean scaffold"
     },

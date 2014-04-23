@@ -1,7 +1,7 @@
 {
-    "name": "checkinout",
+    "name": "statistics",
     "version": "0.0.0",
-    "description": "部员签到，签离",
+    "description": "Some description of statistics",
     "author": {
         "name": "mean scaffold"
     },

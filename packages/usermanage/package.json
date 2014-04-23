@@ -1,7 +1,7 @@
 {
-    "name": "checkinout",
+    "name": "usermanage",
     "version": "0.0.0",
-    "description": "部员签到，签离",
+    "description": "管理员功能：用户管理",
     "author": {
         "name": "mean scaffold"
     },

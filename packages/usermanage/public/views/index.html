@@ -1,0 +1,89 @@
+<div class="" data-ng-controller="UsermanageController">
+    <h1>Example view from your new awesome package</h1>
+    <h2>Package: {{usermanage.name}}</h2>
+    <ol>
+	<li>
+	    <a href="usermanage/example/anyone">Server route that anyone can access</a>
+	</li>
+	<li>
+	    <a href="usermanage/example/auth">Server route that requires authentication</a>
+	</li>
+	<li>
+	    <a href="usermanage/example/admin">Server route that requires admin user</a>
+	</li>
+	<li>
+	    <a href="usermanage/example/render">Raw Html rendering example from using swig</a>
+	</li>
+    </ol>
+    <h3>
+	<img src="/usermanage/assets/img/logo.png" />
+    </h3>
+    </br>
+    <p class="alert alert-info">You can find your package in /packages/usermanage</p>
+    </br>
+    <p class="alert alert-warning">MEAN versions prior to 0.3.2 will be in /node_modules/usermanage</p>
+    </br>
+    <h3>
+	<a href="http://www.mean.io/#!/docs">Documentation</a>
+    </h3>
+    </br>
+</div>
+<section data-ng-controller="UserManageController"; data-ng-init="t={}">
+	<h1> 用户角色管理 </h1>
+	<tabset>
+	    <tab heading="列出用户">
+			<div class="loader" data-ng-init="init()" data-ng-hide="isEmpty()"></div>
+			<br/>
+			<span>搜索用户:</span>
+			<input type="text" class="span2" data-ng-model="filerCategory" placeholder="Categories" autofocus />
+			<input type="text" class="span2" data-ng-model="filerTitle" placeholder="Title" />
+			<div class="pull-right actions-bar" data-ng-show="!isEmpty()">
+				<span>用户:</span>
+				<input type="button" class="btn btn-info" data-ng-hide="global.meanTokenEditableMode" data-ng-click="global.meanTokenEditableMode=!global.meanTokenEditableMode"  value="编辑">
+				<input type="button" class="btn btn-success" data-ng-show="global.meanTokenEditableMode" data-ng-click="global.meanTokenEditableMode=!global.meanTokenEditableMode"  value="完成">
+			</div>
+			<table class="table table-striped table-bordered table-hover editable-table" data-ng-show="!isEmpty()">
+				<tr>
+					<th data-ng-show="global.meanTokenEditableMode"></th>
+					<th>Title <button data-ng-click="sort='title'; reverse=!reverse"><i class="glyphicon glyphicon-sort"></i></button></th>
+					<!-- <th>Content</th> -->
+					<th data-ng-repeat="lang in global.langs | orderBy: lang">{{lang.identifier}}</th>
+					<th>Categories</th>
+					<th>Created <button data-ng-click="sort='created'; reverse=!reverse"><i class="glyphicon glyphicon-sort"></i></button></th>
+				</tr>
+				<tr data-ng-repeat="token in global.tokens| meanTokensToArray| meanTokensCategory:filerTitle:filerCategory | orderBy:sort:reverse">
+					<td data-ng-show="global.meanTokenEditableMode">
+						<button class="btn btn-danger" data-ng-click="remove(token)" value="del" >
+							<i class="glyphicon glyphicon-trash"></i>
+						</button>
+					</td>
+					<td class="table-editable-cell">
+						<span class="editable-span">{{token.title}}</span>
+					</td>
+					<td class="table-editable-cell" data-ng-repeat="lang in global.langs | orderBy:lang">
+						<div mean-token="token.title" l="lang.identifier"></div>
+					</td>
+					<td class="table-editable-cell">
+						<span data-ng-show="!global.meanTokenEditableMode" class="editable-span" data-ng-repeat="category in token.categories">{{category}}<span data-ng-show="!$last">, </span></span>
+						<input data-ng-show="global.meanTokenEditableMode" type="text" class="span2" data-ng-model="token.categories" placeholder="Categories" autofocus />
+					</td>
+					<td>{{token.created | date:'medium'}} </td>
+				</tr>
+			</table>
+
+		</tab>
+	    <tab heading="创建用户">
+			<form class="row-fluid form-inline" name="addUserForm" data-ng-submit="create()" data-ng-init="content={}">
+				<div class="">
+					<input type="text" class="span2" data-ng-model="title" placeholder="Title" autofocus />
+					<input type="text" class="span2" data-ng-repeat="l in global.langs" data-ng-model="content[l.identifier]" placeholder="Content - {{l.identifier}}" />
+					<input type="text" class="span2" data-ng-model="categories" placeholder="Categories" />
+					<input type="submit" class="btn span1" value="SAVE"/>
+				</div>
+			</form>
+		</tab>
+	</tabset>
+
+
+
+</section>
