@@ -1,0 +1,75 @@
+/*img*/
+ .header {
+  width: 100%;
+  height: auto;
+}
+/*title*/
+ .title {
+  position: relative;
+}
+div.title h1 a {
+  cursor: default;
+  pointer-events: none;
+}
+div.title .links {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+}
+header h1 {
+  font-weight: 100;
+  font-size: 2.4em;
+  white-space: nowrap;
+  display: block;
+  position: relative;
+  color: #000;
+  text-align: center;
+  line-height: 2;
+  height: 160px;
+  letter-spacing: 0.1em;
+  padding-left: 0.1em;
+}
+header .aside aside {
+  margin: 10px 5px 0;
+  width: 23%;
+  height: 200px;
+  float: left;
+  padding: 10px;
+}
+header .aside aside {
+  border: 3px dashed #fff;
+}
+header .aside aside div {
+  height: 100%;
+  width: 100%;
+  padding: 30px;
+  font-size: 1.5em;
+}
+.new1 {
+  background-color: #ACFF45;
+}
+.new2 {
+  background-color: #E8AC1D;
+}
+.new3 {
+  background-color: #FF4B2D;
+}
+.new4 {
+  background-color: #A31DE8;
+}
+
+.baiduImg {
+  margin: 10px auto;
+  width: 600px;
+  height: auto;
+  text-align: center;
+}
+.center-block {
+  width: 250px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
