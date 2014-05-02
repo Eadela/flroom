@@ -1,7 +1,14 @@
 'use strict';
 
+var checkinout = require('../controllers/checkinout');
+
 // The Package is past automatically as first parameter
 module.exports = function(Checkinout, app, auth, database) {
+
+    app.route('/checks/:userId')
+        .get(auth.requiresLogin, checkinout.fetch)
+        .put(auth.requiresLogin, checkinout.create)
+        .post(auth.requiresLogin, checkinout.update);
 
     app.get('/checkinout/example/anyone', function(req, res, next) {
         res.send('Anyone can access this');
