@@ -5,7 +5,7 @@ var checkinout = require('../controllers/checkinout');
 // The Package is past automatically as first parameter
 module.exports = function(Checkinout, app, auth, database) {
 
-    app.route('/checks/:userId')
+    app.route('/checks/:username')
         .get(auth.requiresLogin, checkinout.fetch)
         .put(auth.requiresLogin, checkinout.create)
         .post(auth.requiresLogin, checkinout.update);

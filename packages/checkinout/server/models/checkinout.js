@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 var checkinoutSchema = new Schema({
-	userId: {
+	username: {
 		type: String
 	},
 	checkinTime: {
@@ -17,8 +17,17 @@ var checkinoutSchema = new Schema({
 	},
 	checkStatus: {
 		type: String,
-		default: 'no check'
+		default: 'Not Check In'
 	}
 })
+
+/**
+ * Statics
+ */
+checkinoutSchema.statics.search = function(username, cb) {
+    this.findOne({
+        username: username
+    }).exec(cb);
+};
 
 mongoose.model('Checks', checkinoutSchema);

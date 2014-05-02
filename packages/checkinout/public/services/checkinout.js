@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('mean.checkinout').factory('Checkinout', ['$resource', function($resource) {
-	return $resource('checks/:userId', {
-		userId:'@_id'
+	return $resource('checks/:username', {
+		username:'@_username'
 	}, {
 		checkIn: {
 			method: 'PUT'
