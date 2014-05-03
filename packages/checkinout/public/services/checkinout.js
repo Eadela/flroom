@@ -2,13 +2,13 @@
 
 angular.module('mean.checkinout').factory('Checkinout', ['$resource', function($resource) {
 	return $resource('checks/:username', {
-		username:'@_username'
+		username:'@username'
 	}, {
 		checkIn: {
-			method: 'PUT'
+			method: 'POST'
 		},
 		checkOut: {
-			method: 'POST'
+			method: 'PUT'
 		}
 	});
 }]);

@@ -1,32 +1,51 @@
 'use strict';
 
-require('../models/checkinout');
+require('../models/checkPeopels');
+require('../models/checkRecords');
 
 var mongoose = require('mongoose'),
-	Checks = mongoose.model('Checks');
+  CheckPeopels = mongoose.model('CheckPeopels'),
+  CheckRecords = mongoose.model('CheckRecords'),
+  _ = require('lodash');
 
 exports.fetch = function(req, res) {
-	var username = req.username;
-	Checks.search(username,function(err, check) {
-		if(!check) {
-			//create a new username 
-			var checks = new Checks(req.body);
-			checks.save(function(err,status) {
-				if (err) {
+  var username = req.params.username;
+  CheckPeopels.search(username, function(err, checkPeopel) {
+    if (!checkPeopel) {
+      var checkNewPeopel = new CheckPeopels({username: username});
+      checkNewPeopel.save(function(resoult) {
+        res.jsonp(resoult);
+      });
+    } else {
+      res.jsonp(checkPeopel);
+    }
+  });
+};
 
-				} else {
-					res.jsonp(status);
-				}
-			})
-		} else {
-			res.jsonp(check);
-		}
-	})
-
-}
 exports.create = function(req, res) {
+	var checkoutTime = new Date().getTime();
+	var checkNewRecord = new CheckRecords(_.extend({checkoutTime: checkoutTime}, req.body));
+	checkNewRecord.save(function(err, checkRecord) {
+		var checkInTime = checkRecord.checkinTime;
+		CheckPeopels.findOneAndUpdate(checkRecord.username, {
+			working: true,
+			recordId: checkRecord._id
+		}, function(checkPeopel) {
+			var checkInformation = _.extend(checkPeopel, {checkInTime: checkInTime})
+			res.jsonp(checkInformation);
+		});
+	});
+};
 
-}
 exports.update = function(req, res) {
-
-}
+  var username = req.username;
+  CheckPeopels.findOneAndUpdate(username, {
+    working: false
+  }, function(err, checkPeopel) {
+  	CheckRecords.findOneAndUpdate(checkPeopel.recordId, {
+  		checkoutTime: new Date().getTime()
+  	}, function(result) {
+  		res.jsonp(result);
+  	});
+  });
+};

@@ -7,8 +7,8 @@ module.exports = function(Checkinout, app, auth, database) {
 
     app.route('/checks/:username')
         .get(auth.requiresLogin, checkinout.fetch)
-        .put(auth.requiresLogin, checkinout.create)
-        .post(auth.requiresLogin, checkinout.update);
+        .post(auth.requiresLogin, checkinout.create)
+        .put(auth.requiresLogin, checkinout.update);
 
     app.get('/checkinout/example/anyone', function(req, res, next) {
         res.send('Anyone can access this');
