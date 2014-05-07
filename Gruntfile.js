@@ -16,6 +16,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         assets: grunt.file.readJSON('server/config/assets.json'),
+        clean: ['public/build'],
         watch: {
             js: {
                 files: paths.js,
@@ -92,7 +93,7 @@ module.exports = function(grunt) {
                 reporter: 'spec',
                 require: 'server.js'
             },
-            src: ['test/mocha/**/*.js']
+            src: ['test/mocha/**/*.js', 'packages/**/test/mocha/**/*.js']
         },
         env: {
             test: {
@@ -111,9 +112,9 @@ module.exports = function(grunt) {
 
     //Default task(s).
     if (process.env.NODE_ENV === 'production') {
-        grunt.registerTask('default', ['cssmin', 'uglify', 'concurrent']);
+        grunt.registerTask('default', ['clean','cssmin', 'uglify', 'concurrent']);
     } else {
-        grunt.registerTask('default', ['jshint', 'csslint', 'concurrent']);
+        grunt.registerTask('default', ['clean','jshint', 'csslint', 'concurrent']);
     }
 
     //Test task.
