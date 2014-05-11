@@ -16,7 +16,7 @@ angular.module('mean').controller('CheckinoutController', ['$scope', 'Global', '
           $scope.checkStatus = '签到上班';
         }
       }
-    }
+    };
 
     testStatus();
 

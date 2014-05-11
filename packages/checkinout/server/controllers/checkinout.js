@@ -31,7 +31,7 @@ exports.create = function(req, res) {
 			working: true,
 			recordId: checkRecord._id
 		}, function(checkPeopel) {
-			var checkInformation = _.extend(checkPeopel, {checkInTime: checkInTime})
+			var checkInformation = _.extend(checkPeopel, {checkInTime: checkInTime});
 			res.jsonp(checkInformation);
 		});
 	});
