@@ -23,21 +23,33 @@
     margin-left:0
 }
 .content {
-    margin-top:70px;
+    margin:45px 0 50px;
     width:100%
 }
-footer {
+/*footer*/
+ footer {
     position:fixed;
-    left:0;
-    bottom:0;
-    height:40px;
+    bottom: 0;
     width:100%;
-    padding-top: 10px;
-    background:#ddd;
-    -webkit-box-shadow:0 8px 6px 6px black;
-    -moz-box-shadow:0 8px 6px 6px black;
-    box-shadow:0 8px 6px 6px black
+    background:#008cba;
+    z-index: 2;
 }
 footer p {
-    padding:5px 0 12px 10px
+    color: #fff;
+    padding:5px 20px;
+    margin: 0;
+}
+footer p a {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 300;
+}
+/*admin-menu*/
+ .admin-menu {
+    z-index: 1;
+}
+
+/*main*/
+.contentMain{
+    margin-top: 60px;
 }

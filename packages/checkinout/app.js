@@ -18,7 +18,7 @@ Checkinout.register(function(app, auth, database) {
 
     //We are adding a link to the main menu for all authenticated users
     Checkinout.menus.add({
-        title: 'checkinout example page',
+        title: '签到',
         link: 'checkinout example page',
         roles: ['member','editor','inspector','repairman'],
         menu: 'main'

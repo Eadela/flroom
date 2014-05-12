@@ -1,75 +1,138 @@
 /*img*/
- .header {
-  width: 100%;
-  height: auto;
+ header img {
+    width: 100%;
+    height: auto;
 }
 /*title*/
  .title {
-  position: relative;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: 45px;
+    left: 0;
+    margin: 0;
 }
-div.title h1 a {
-  cursor: default;
-  pointer-events: none;
+header.title .links {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
 }
-div.title .links {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
+.title .links h1 {
+    font-family: Arial, sans-serif;
+    font-weight: 100;
+    white-space: nowrap;
+    display: block;
+    position: relative;
+    text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 60px;
+    line-height: 2;
+    height: 160px;
+    letter-spacing: 0.1em;
+    padding-left: 0.1em;
+    /* To account for letter spacing */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
-header h1 {
-  font-weight: 100;
-  font-size: 2.4em;
-  white-space: nowrap;
-  display: block;
-  position: relative;
-  color: #000;
-  text-align: center;
-  line-height: 2;
-  height: 160px;
-  letter-spacing: 0.1em;
-  padding-left: 0.1em;
+.title .links h1 a {
+    cursor: default;
+    pointer-events: none;
+    color: #428bca;
+    text-decoration: none;
+    display: block;
 }
-header .aside aside {
-  margin: 10px 5px 0;
-  width: 23%;
-  height: 200px;
-  float: left;
-  padding: 10px;
+.title .links h1 a span {
+    font-weight: bold;
 }
-header .aside aside {
-  border: 3px dashed #fff;
+@media (max-width: 330px) {
+    .title .links h1 {
+        font-size: 16px;
+    }
 }
-header .aside aside div {
-  height: 100%;
-  width: 100%;
-  padding: 30px;
-  font-size: 1.5em;
+@media (max-width: 1450px) {
+    .title .links h1 {
+        font-size: 60px;
+    }
 }
-.new1 {
-  background-color: #ACFF45;
+@media (max-width: 1024px) {
+    .title .links h1 {
+        font-size: 50px;
+    }
 }
-.new2 {
-  background-color: #E8AC1D;
+@media (max-width: 768px) {
+    .title .links h1 {
+        font-size: 25px;
+        height: 120px;
+    }
+    .title .links h1 br {
+        display: block;
+    }
+    .title .links h1 {
+        font-weight: 300;
+    }
 }
-.new3 {
-  background-color: #FF4B2D;
+/*news*/
+ aside {
+    margin-top: 340px;
+    height: 200px;
+    padding: 10px;
 }
-.new4 {
-  background-color: #A31DE8;
+aside ul {
+    display: block;
+    list-style: none;
+    font-size: 1.5em;
 }
-
-.baiduImg {
-  margin: 10px auto;
-  width: 600px;
-  height: auto;
-  text-align: center;
+aside ul li {
+    display: list-item;
+    position: relative;
+    min-height: 200px;
+    float: left;
+}
+aside ul li:nth-child(1) {
+    width: 24%;
+    background-color: #ACFF45;
+}
+aside ul li:nth-child(2) {
+    width: 24%;
+    background-color: #E8AC1D;
+}
+aside ul li:nth-child(3) {
+    width: 24%;
+    background-color: #FF4B2D;
+}
+aside ul li:nth-child(4) {
+    width: 24%;
+    background-color: #A31DE8;
+}
+aside ul li:nth-child(5) {
+    width: 4%;
+    text-align: center;
+    line-height: 200px;
+    background-color: #A31DE8;
+}
+aside ul li:not(.newsLast) a {
+    display: block;
+    margin: 5px;
+    background: #fff;
+    padding: 8px;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+/*find our place*/
+ .baiduImg {
+    margin: 10px auto;
+    width: 600px;
+    height: auto;
+    text-align: center;
 }
 .center-block {
-  width: 250px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+    width: 250px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
