@@ -34,7 +34,6 @@ exports.create = function(req, res) {
             working: true,
             recordId: checkRecord._id
         }, function(err, checkPeopel) {
-            console.log(checkPeopel);
             res.jsonp(checkPeopel);
         });
     });
@@ -45,12 +44,10 @@ exports.update = function(req, res) {
     CheckPeopels.findOneAndUpdate(username, {
         working: false
     }, function(err, returnPeopel) {
-        console.log(returnPeopel);
         var q ={_id:returnPeopel.recordId};
         CheckRecords.findOneAndUpdate(q, {
             checkoutTime: new Date().getTime()
         }, function(err, result) {
-            console.log(result);
             res.jsonp(result);
         });
     });

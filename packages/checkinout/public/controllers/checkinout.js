@@ -48,7 +48,6 @@ angular.module('mean').controller('CheckinoutController', ['$scope', 'Global', '
                     $scope.checkStatus = '上班中';
                     $scope.btn = 'btn-success';
                     $scope.working = true;
-                    $scope.checkRecords = checkRecords;
                 });
             };
             var checkOut = function() {
@@ -58,7 +57,6 @@ angular.module('mean').controller('CheckinoutController', ['$scope', 'Global', '
                     $scope.checkStatus = '未上班';
                     $scope.btn = 'btn-primary';
                     $scope.working = false;
-                    $scope.checkRecords = checkRecords;
                 });
             };
             return $scope.working ? checkOut() : checkIn();
