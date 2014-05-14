@@ -6,10 +6,10 @@ var checkinout = require('../controllers/checkinout');
 module.exports = function(Checkinout, app, auth, database) {
 
     app.route('/checks/:username')
-        .get(auth.requiresLogin, checkinout.fetch)
+        .get(auth.requiresLogin, checkinout.get)
         .post(auth.requiresLogin, checkinout.create)
         .put(auth.requiresLogin, checkinout.update);
-
+    app.get('/CheckRecord/:username', checkinout.fetch);
     app.get('/checkinout/example/anyone', function(req, res, next) {
         res.send('Anyone can access this');
     });

@@ -1,4 +1,4 @@
-<section data-ng-controller="IndexController">
+<section data-ng-controller="IndexController" class="indexContent">
     <header class="title">
         <img src="/public/index/assets/img/header2.jpeg">
         <div class="links">
@@ -31,18 +31,16 @@
             </h1>
         </div>
     </header>
-    <aside class="container">
-        <ul>
+    <aside>
+        <ul class="da-thumbs">
             <li ng-repeat="new in news">
-                <a href="">
-                    <img src="">
-                    <div>
+                <a hoverdir href="">
+                    <img ng-src="/public/index/assets/img/{{new.num}}.jpg">
+                    <div class="animated">
                         <h3 ng-bind="new.title"></h3>
                         <p ng-bind="new.content"></p>
                     </div>
                 </a>
-            </li>
-            <li class="newsLast"><a href="">...</a>
             </li>
         </ul>
     </aside>

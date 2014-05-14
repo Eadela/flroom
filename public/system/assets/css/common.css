@@ -53,3 +53,20 @@ footer p a {
 .contentMain{
     margin-top: 60px;
 }
+/*toTop*/
+.toTop {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    text-align: center;
+    line-height: 35px;
+    color: #fff;
+    background-color: #176583;
+}
+.toTop i {
+    top: 0;
+    width: 100%;
+    height: 100%;
+}

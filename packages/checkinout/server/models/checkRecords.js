@@ -17,4 +17,13 @@ var checkinoutSchema = new Schema({
   }
 });
 
+/**
+ * Statics
+ */
+checkinoutSchema.statics.search = function(username, cb) {
+  this.findOne({
+    username: username
+  }).exec(cb);
+};
+
 mongoose.model('CheckRecords', checkinoutSchema);

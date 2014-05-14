@@ -12,3 +12,9 @@ angular.module('mean.checkinout').factory('Checkinout', ['$resource', function($
 		}
 	});
 }]);
+
+angular.module('mean.checkinout').factory('CheckRecord', ['$resource', function($resource) {
+	return $resource('CheckRecord/:username', {
+		username:'@username'
+	});
+}]);
