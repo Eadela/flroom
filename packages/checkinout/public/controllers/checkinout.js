@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('mean').controller('CheckinoutController', ['$scope', 'Global', 'Checkinout', 'CheckRecord', '$q',
-    function($scope, Global, Checkinout, CheckRecord, $q) {
+angular.module('mean').controller('CheckinoutController', ['$scope', 'Global', 'Checkinout', 'CheckRecord',
+    function($scope, Global, Checkinout, CheckRecord) {
         $scope.global = Global;
         $scope.checkRecords = [];
         $scope.working = undefined;
@@ -25,8 +25,8 @@ angular.module('mean').controller('CheckinoutController', ['$scope', 'Global', '
         $scope.get = function() {
             Checkinout.get({
                 username: window.user.username
-            }, function(status) {
-                $scope.working = status.working;
+            }, function(checkPeopel) {
+                $scope.working = checkPeopel.working;
                 testStatus();
             });
             $scope.fetch();
@@ -41,34 +41,27 @@ angular.module('mean').controller('CheckinoutController', ['$scope', 'Global', '
         };
 
         $scope.check = function() {
-            var deferred = $q.defer();
             var checkIn = function() {
                 Checkinout.checkIn({
                     username: window.user.username
-                }, function() {
+                }, function(checkRecords) {
                     $scope.checkStatus = '上班中';
                     $scope.btn = 'btn-success';
                     $scope.working = true;
-                    deferred.resolve();
+                    $scope.checkRecords = checkRecords;
                 });
             };
             var checkOut = function() {
                 Checkinout.checkOut({
                     username: window.user.username
-                }, function() {
+                }, function(checkRecords) {
                     $scope.checkStatus = '未上班';
                     $scope.btn = 'btn-primary';
                     $scope.working = false;
-                    deferred.resolve();
+                    $scope.checkRecords = checkRecords;
                 });
             };
-            $scope.working ? checkOut() : checkIn();
-            return deferred.promise;
+            return $scope.working ? checkOut() : checkIn();
         };
-
-        var promise = $scope.check();
-        promise.then(function() {
-            $scope.fetch();
-        }, null, null);
     }
 ]);

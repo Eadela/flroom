@@ -15,8 +15,8 @@ exports.get = function(req, res) {
             var checkNewPeopel = new CheckPeopels({
                 username: username
             });
-            checkNewPeopel.save(function(resoult) {
-                res.jsonp(resoult);
+            checkNewPeopel.save(function(err, checkPeopel) {
+                res.jsonp(checkPeopel);
             });
         } else {
             res.jsonp(checkPeopel);
@@ -25,20 +25,17 @@ exports.get = function(req, res) {
 };
 
 exports.create = function(req, res) {
-    var checkoutTime = new Date().getTime();
+    var checkinTime = new Date().getTime();
     var checkNewRecord = new CheckRecords(_.extend({
-        checkoutTime: checkoutTime
+        checkinTime: checkinTime
     }, req.body));
     checkNewRecord.save(function(err, checkRecord) {
-        var checkInTime = checkRecord.checkinTime;
         CheckPeopels.findOneAndUpdate(checkRecord.username, {
             working: true,
             recordId: checkRecord._id
-        }, function(checkPeopel) {
-            var checkInformation = _.extend(checkPeopel, {
-                checkInTime: checkInTime
-            });
-            res.jsonp(checkInformation);
+        }, function(err, checkPeopel) {
+            console.log(checkPeopel);
+            res.jsonp(checkPeopel);
         });
     });
 };
@@ -47,10 +44,13 @@ exports.update = function(req, res) {
     var username = req.username;
     CheckPeopels.findOneAndUpdate(username, {
         working: false
-    }, function(err, checkPeopel) {
-        CheckRecords.findOneAndUpdate(checkPeopel.recordId, {
+    }, function(err, returnPeopel) {
+        console.log(returnPeopel);
+        var q ={_id:returnPeopel.recordId};
+        CheckRecords.findOneAndUpdate(q, {
             checkoutTime: new Date().getTime()
-        }, function(result) {
+        }, function(err, result) {
+            console.log(result);
             res.jsonp(result);
         });
     });
@@ -58,7 +58,7 @@ exports.update = function(req, res) {
 
 exports.fetch = function(req, res) {
     var username = req.params.username;
-    CheckRecords.find(username).sort('checkinTime').exec(function(err, checkRecords) {
+    CheckRecords.find(username).sort('-checkinTime').exec(function(err, checkRecords) {
         if (err) {
             res.render('error', {
                 status: 500
@@ -66,5 +66,5 @@ exports.fetch = function(req, res) {
         } else {
             res.jsonp(checkRecords);
         }
-    })
+    });
 };

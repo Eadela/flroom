@@ -20,7 +20,7 @@ Checkinout.register(function(app, auth, database) {
     Checkinout.menus.add({
         title: '签到',
         link: 'checkinout example page',
-        roles: ['member','editor','inspector','repairman'],
+        roles: ['authenticated'],
         menu: 'main'
     });
 
