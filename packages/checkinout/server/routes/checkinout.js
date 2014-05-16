@@ -10,17 +10,6 @@ module.exports = function(Checkinout, app, auth, database) {
         .post(auth.requiresLogin, checkinout.create)
         .put(auth.requiresLogin, checkinout.update);
     app.get('/CheckRecord/:username', checkinout.fetch);
-    app.get('/checkinout/example/anyone', function(req, res, next) {
-        res.send('Anyone can access this');
-    });
-
-    app.get('/checkinout/example/auth', auth.requiresLogin, function(req, res, next) {
-        res.send('Only authenticated users can access this');
-    });
-
-    app.get('/checkinout/example/admin', auth.requiresAdmin, function(req, res, next) {
-        res.send('Only users with Admin role can access this');
-    });
 
     app.get('/checkinout/example/render', function(req, res, next) {
         Checkinout.render('index', {

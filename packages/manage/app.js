@@ -5,22 +5,22 @@
  */
 var Module = require('meanio').Module;
 
-var Checkinout = new Module('Checkinout');
+var Manage = new Module('Manage');
 
 /*
  * All MEAN packages require registration
  * Dependency injection is used to define required modules
  */
-Checkinout.register(function(app, auth, database) {
+Manage.register(function(app, auth, database) {
 
     //We enable routing. By default the Package Object is passed to the routes
-    Checkinout.routes(app, auth, database);
+    Manage.routes(app, auth, database);
 
     //We are adding a link to the main menu for all authenticated users
-    Checkinout.menus.add({
-        title: '签到',
-        link: 'check use',
-        roles: ['authenticated'],
+    Manage.menus.add({
+        title: '管理设置',
+        link: 'manage example page',
+        roles: ['admin'],
         menu: 'main'
     });
 
@@ -28,7 +28,7 @@ Checkinout.register(function(app, auth, database) {
     //Uncomment to use. Requires meanio@0.3.7 or above
     // Save settings with callback
     // Use this for saving data from administration pages
-    Checkinout.settings({
+    Manage.settings({
 	'someSetting': 'some value'
     }, function(err, settings) {
 	//you now have the settings object
@@ -36,15 +36,15 @@ Checkinout.register(function(app, auth, database) {
 
     // Another save settings example this time with no callback
     // This writes over the last settings.
-    Checkinout.settings({
+    Manage.settings({
 	'anotherSettings': 'some value'
     });
 
     // Get settings. Retrieves latest saved settigns
-    Checkinout.settings(function(err, settings) {
+    Manage.settings(function(err, settings) {
 	//you now have the settings object
     });
     */
 
-    return Checkinout;
+    return Manage;
 });

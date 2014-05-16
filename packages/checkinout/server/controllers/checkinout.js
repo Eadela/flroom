@@ -52,7 +52,7 @@ exports.update = function(req, res) {
 
 exports.fetch = function(req, res) {
     var username = req.params.username;
-    CheckRecords.find(username).sort('-checkinTime').exec(function(err, checkRecords) {
+    CheckRecords.find({username: username}).sort('-checkinTime').exec(function(err, checkRecords) {
         if (err) {
             res.render('error', {
                 status: 500

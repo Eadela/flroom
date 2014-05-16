@@ -2,9 +2,13 @@
 
 angular.module('mean').config(['$stateProvider',
     function($stateProvider) {
-        $stateProvider.state('workflow example page', {
-            url: '/workflow/example',
-            templateUrl: 'workflow/views/index.html'
+        $stateProvider
+        .state('workflow list', {
+            url: '/workflow',
+            templateUrl: 'workflow/views/list.html'
+        }).state('workflow setting', {
+            url: '/workflow/setting',
+            templateUrl: 'workflow/views/setting.html'
         });
     }
 ]);

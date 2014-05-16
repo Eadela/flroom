@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean').controller('WorkflowController', ['$scope', 'Global',
+angular.module('mean').controller('WorkflowListController', ['$scope', 'Global', 'Workflow',
     function($scope, Global, Workflow) {
         $scope.global = Global;
         $scope.items = [{

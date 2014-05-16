@@ -19,8 +19,14 @@ Workflow.register(function(app, auth, database) {
     //We are adding a link to the main menu for all authenticated users
     Workflow.menus.add({
         title: '工作流',
-        link: 'workflow example page',
+        link: 'workflow list',
         roles: ['authenticated'],
+        menu: 'main'
+    });
+    Workflow.menus.add({
+        title: '工作流设置',
+        link: 'workflow setting',
+        roles: ['admin'],
         menu: 'main'
     });
 
@@ -29,20 +35,20 @@ Workflow.register(function(app, auth, database) {
     // Save settings with callback
     // Use this for saving data from administration pages
     Workflow.settings({
-	'someSetting': 'some value'
+    'someSetting': 'some value'
     }, function(err, settings) {
-	//you now have the settings object
+    //you now have the settings object
     });
 
     // Another save settings example this time with no callback
     // This writes over the last settings.
     Workflow.settings({
-	'anotherSettings': 'some value'
+    'anotherSettings': 'some value'
     });
 
     // Get settings. Retrieves latest saved settigns
     Workflow.settings(function(err, settings) {
-	//you now have the settings object
+    //you now have the settings object
     });
     */
 
