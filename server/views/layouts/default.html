@@ -3,8 +3,8 @@
 {% include '../includes/head.html' %}
 
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top" data-ng-include="'/public/system/views/header.html'" data-role="navigation"></nav>
-    {% if adminEnabled() %}
+    <div class="navbar navbar-inverse navbar-fixed-top" data-ng-include="'/public/system/views/header.html'" data-role="navigation"></div>
+    {% if adminEnabled %}
     <section class="admin-menu">
         <div data-ng-include="'/mean-admin/views/index.html'"></div>
     </section>
