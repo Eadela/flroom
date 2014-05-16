@@ -15,3 +15,9 @@ angular.module('mean').controller('WorkflowListController', ['$scope', 'Global',
         }];
     }
 ]);
+angular.module('mean').controller('WorkflowSettingController', ['$scope', 'Global', 'Workflow',
+    function($scope, Global, Workflow) {
+        $scope.global = Global;
+
+    }
+]);

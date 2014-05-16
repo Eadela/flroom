@@ -1,0 +1,10 @@
+<div class="" data-ng-controller="WorkflowSettingController">
+    <div class="col-md-8">
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="item in items">
+                <span class="badge"><i class="glyphicon" ng-class="{true: 'glyphicon-ok', false: 'glyphicon-remove'}[item.isfinish]"></i></span>
+                {{item.description}}
+            </li>
+        </ul>
+    </div>
+</div>
