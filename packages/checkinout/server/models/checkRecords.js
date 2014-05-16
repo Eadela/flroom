@@ -12,8 +12,7 @@ var checkinoutSchema = new Schema({
     default: Date.now
   },
   checkoutTime: {
-    type: Date,
-    default: Date.now
+    type: Date
   }
 });
 

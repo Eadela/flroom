@@ -40,26 +40,28 @@ angular.module('mean').controller('CheckinoutController', ['$scope', 'Global', '
             });
         };
 
-        $scope.check = function() {
-            var checkIn = function() {
+        $scope.check = function(callback) {
+            var checkIn = function(callback) {
                 Checkinout.checkIn({
                     username: window.user.username
                 }, function(checkRecords) {
                     $scope.checkStatus = '上班中';
                     $scope.btn = 'btn-success';
                     $scope.working = true;
+                    callback();
                 });
             };
-            var checkOut = function() {
+            var checkOut = function(callback) {
                 Checkinout.checkOut({
                     username: window.user.username
                 }, function(checkRecords) {
                     $scope.checkStatus = '未上班';
                     $scope.btn = 'btn-primary';
                     $scope.working = false;
+                    callback();
                 });
             };
-            return $scope.working ? checkOut() : checkIn();
+            return $scope.working ? checkOut(callback) : checkIn(callback);
         };
     }
 ]);

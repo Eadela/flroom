@@ -5,8 +5,8 @@ require('../models/checkRecords');
 
 var mongoose = require('mongoose'),
     CheckPeopels = mongoose.model('CheckPeopels'),
-    CheckRecords = mongoose.model('CheckRecords'),
-    _ = require('lodash');
+    CheckRecords = mongoose.model('CheckRecords');
+   /* _ = require('lodash');*/
 
 exports.get = function(req, res) {
     var username = req.params.username;
@@ -25,10 +25,7 @@ exports.get = function(req, res) {
 };
 
 exports.create = function(req, res) {
-    var checkinTime = new Date().getTime();
-    var checkNewRecord = new CheckRecords(_.extend({
-        checkinTime: checkinTime
-    }, req.body));
+    var checkNewRecord = new CheckRecords(req.body);
     checkNewRecord.save(function(err, checkRecord) {
         CheckPeopels.findOneAndUpdate(checkRecord.username, {
             working: true,
