@@ -1,4 +1,4 @@
-<div class="container" data-ng-controller="CheckinoutController" ng-init="get()">
+<div data-ng-controller="CheckinoutController" ng-init="get()">
     <div class="col-md-12">
         <div class="row">
             <section class="col-md-6">
@@ -18,11 +18,39 @@
                             <td>{{checkRecord.checkoutTime | date:'yy/M/d h:m a'}}</td>
                         </tr>
                     </tbody>
-
                 </table>
             </section>
-            <aside col-md-4>
-                <button type="button" class="btn btn-lg" ng-class="btn" ng-bind="checkStatus" ng-click="check(fetch)"></button>
+            <aside class="col-md-3">
+                <form data-ng-submit="check(fetch)" role="form">
+                    <button type="submit" class="btn btn-lg btn-block" ng-class="btn" ng-bind="checkStatus"></button>
+                    <hr>
+                    <div class="form-group">
+                        <label class="radio-inline">
+                            <input type="radio" name="checknotice" value="" checked>
+                            <span>本班</span>
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="checknotice" ng-model="replace" value="">
+                            <span>替班</span>
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="checknotice" ng-model="return" value="">
+                            <span>还班</span>
+                        </label>
+                    </div>
+                    <div ng-show="replace">
+                        <div class="well well-lg">
+                            <input type="text" class="form-control">
+                            <select multiple class="form-control">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
             </aside>
         </div>
 
