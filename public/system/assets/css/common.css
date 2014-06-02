@@ -64,6 +64,7 @@ footer p a {
     line-height: 35px;
     color: #fff;
     background-color: #176583;
+    visibility: hidden;
 }
 .toTop i {
     top: 0;
