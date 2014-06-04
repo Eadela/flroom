@@ -18,7 +18,7 @@ Scheduling.register(function(app, auth, database) {
 
     //We are adding a link to the main menu for all authenticated users
     Scheduling.menus.add({
-        title: 'scheduling example page',
+        title: '排班',
         link: 'scheduling example page',
         roles: ['authenticated'],
         menu: 'main'
