@@ -36,8 +36,14 @@
 }
 footer p {
     color: #fff;
-    padding:5px 20px;
+    padding:5px 0 12px 10px
     margin: 0;
+}
+.ng-invalid.ng-dirty{
+    border-color:#FA787E;
+}
+.ng-valid.ng-dirty{
+    border-color:#78FA89;
 }
 footer p a {
     color: #fff;
@@ -71,3 +77,4 @@ footer p a {
     width: 100%;
     height: 100%;
 }
+
