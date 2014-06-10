@@ -1,5 +1,5 @@
 'use strict';
-
+var request = request('request');
 // The Package is past automatically as first parameter
 module.exports = function(Scheduling, app, auth, database) {
 
