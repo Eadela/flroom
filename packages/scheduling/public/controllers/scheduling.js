@@ -8,9 +8,9 @@ angular.module('mean').controller('SchedulingController', ['$scope', 'Global', '
             $http.get({
                 username: window.user.username
             }, function(data) {
-            })
+            });
             // body...
-        }
+        };
         $scope.getScheduling = function() {
             $http.post({
         		studentId:'08113464',
