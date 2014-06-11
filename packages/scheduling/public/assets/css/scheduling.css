@@ -1,1 +1,3 @@
-.scheduling_example h1:{background-color:purple}
+tr > tr > td{
+	background-color: #008cba;
+}
