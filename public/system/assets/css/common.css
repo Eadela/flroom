@@ -83,3 +83,17 @@ footer p a {
 table.schedule > tbody >tr > td > button {
     float: right;
 }
+[tabindex="-1"] {
+    outline: 0;
+}
+.display-inline input {
+    display: inline;
+}
+.popover-foot {
+    margin: 0;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: #f7f7f7;
+    border-top: 1px solid #ebebeb;
+}

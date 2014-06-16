@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 var scheduleRecordSchema = new Schema({
-	recordName: {
+	className: {
 		type: String
 	},
 	dateOfDay: {
