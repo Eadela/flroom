@@ -49,7 +49,8 @@ angular.module('mean').controller('SchedulingController', ['$scope', 'Global', '
                 }
             });
             $scope.classInf = {};
-            return classes.push(newclass);
+            classes.push(newclass);
+            return classes;
         };
         $scope.schedules = [
             [
