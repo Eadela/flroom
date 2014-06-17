@@ -1,24 +1,23 @@
 <div class="popover" tabindex="-1" ng-show="content">
     <div class="arrow"></div>
-    <form name="popoverForm" ng-submit="popover.saved=true;$hide()">
+    <form name="popoverForm" ng-submit="classes = add(classes, classInf);$hide()" ng-init="classInf.dateOfDay = classes[0].dateOfDay;classInf.dayOfWeek = classes[0].dayOfWeek">
         <h3 class="popover-title" ng-show="title">添加课程</h3>
         <div class="popover-content">
 
             <div class="form-group">
-                <label for="className">课程名称</label>
-                <input id="className" type="text" class="form-control" ng-model="abs">
+                <label for="classname">课程名称</label>
+                <input id="classname" type="text" class="form-control" ng-model="classInf.classname" required>
             </div>
+            {{classes[0].dateOfDay}}
+            {{classes[0].dayOfWeek}}
             <div>
                 <label>持续时间</label>
                 <div class="display-inline">从第
-                    <input id="startWeek" class="form-control input-sm" style="width:50px" ng-model="startWeek" type="number" min="1" max="20">周，到第
-                    <input id="endWeek" class="form-control input-sm" style="width:50px" type="number" min="1" max="20">周
+                    <input id="startWeek" class="form-control input-sm" style="width:50px" type="number" ng-model="classInf.startWeek" min="1" max="20" required>周，到第
+                    <input id="endWeek" class="form-control input-sm" style="width:50px" type="number" ng-model="classInf.endWeek" min="1" max="20" required>周
                 </div>
             </div>
 
-        </div>
-        <div>
-            {{class.information}}
         </div>
         <div class="form-actions popover-foot">
             <button type="button" class="btn btn-danger btn-sm" ng-click="$hide()">取消</button>
