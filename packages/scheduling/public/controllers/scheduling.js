@@ -1,19 +1,42 @@
 'use strict';
 
-angular.module('mean').controller('SchedulingController', ['$scope', 'Global', '$http',
-    function($scope, Global, $http) {
+angular.module('mean').controller('SchedulingController', ['$scope', 'Global', '$http', '$cookies',
+    function($scope, Global, $http, $cookies) {
         $scope.global = Global;
         $scope.popover = {
             'title': ' ',
             'content': ' '
         };
-        $scope.classInf = {};
-        $scope.classIndex = [];
-        $scope.dateOfDayInit = function(schedules, index){
-          return schedules.map(function(schedule){
-            schedule[0].dateOfDay = index;
-          });
+        $scope.loginInf = {};
+        $scope.reloadcode = function() {
+            var verify = document.getElementById('icode');
+            verify.src = verify.src + '?';
         };
+        $scope.loginInf.cookie = $cookies['ASP.NET_SessionId'];
+        console.log($scope.loginInf.cookie);
+        $scope.getScheduleData = function(loginInf) {
+            $scope.code = null;
+            $scope.response = null;
+            $scope.url = 'http://202.119.199.113:8080/servletForstudio/servlet/UpdateDataSpServlet?callback=JSON_CALLBACK&xh=' +
+                loginInf.studentId + '&password=' +
+                loginInf.password + '&yanzhengma=' +
+                loginInf.validateCode + '&cookie=ASP.NET_SessionId=' +
+                loginInf.cookie;
+
+            $http({
+                method: 'jsonp',
+                url: $scope.url
+            }).
+            success(function(data, status) {
+                $scope.status = status;
+                $scope.data = data;
+            }).
+            error(function(data, status) {
+                $scope.data = data || 'Request failed';
+                $scope.status = status;
+            });
+        };
+        $scope.classInf = {};
         $scope.add = function(classes, classInf) {
             var newclass = {};
             Object.defineProperties(newclass, {

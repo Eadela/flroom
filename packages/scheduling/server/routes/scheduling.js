@@ -1,29 +1,24 @@
 'use strict';
-/*var request = require('request');
-var encoding = require('encoding');*/
+var request = require('request');
 // The Package is past automatically as first parameter
 module.exports = function(Scheduling, app, auth, database) {
-/*    var options = {
-        url: 'http://202.119.199.113:8080/servletForstudio/servlet/GetScheduleServletJsonInterface?xh=08113464',
-        headers: {
-            'User-Agent': 'request'
+    app.get('/scheduling/example/checkcode', function(req, res, next) {
+        var options = {
+            url: 'http://jwxt1.cumt.edu.cn/CheckCode.aspx'
+        };
+
+        function callback(error, response, body) {
+            if (error) {
+                console.log('error');
+            }
+            if (!error && response.statusCode === 200) {
+                res.set({'Content-Type': 'image/Gif'});
+                res.cookie('checkcode',response.headers['set-cookie'][0]);
+                console.log(response);
+                res.send(body);
+            }
         }
-
-    };
-
-    function callback(error, response, body) {
-        if (error) {
-            console.log('error');
-        }
-        if (!error && response.statusCode === 200) {
-            console.log(body);
-        }
-    }
-
-    request(options, callback);*/
-
-    app.get('/scheduling/example/anyone', function(req, res, next) {
-        res.send('Anyone can access this');
+        request(options, callback);
     });
 
     app.get('/scheduling/example/auth', auth.requiresLogin, function(req, res, next) {
